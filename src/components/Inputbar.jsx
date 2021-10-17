@@ -24,7 +24,7 @@ const Inputbar = () => {
         if (method === 'get') {
             const res = await axios.get(url)
             setResponse(res);
-            console.log(response)
+            console.log(JSON.stringify(response))
         }
         else if (method === 'post') {
             setResponse(await axios.post(url, data))
@@ -66,38 +66,14 @@ const Inputbar = () => {
             </form>
 
 
-            {response
-                ?? 
-                <>
-                <div class="card card-body mb-4">
-                    <h5>Status: {response.status}</h5>
-                </div>
-                <div class="card mt-3">
-                    <div class="card-header">
-                    Headers
-                    </div>
-                    <div class="card-body">
-                    <pre>{JSON.stringify(response.headers, null, 2)}</pre>
-                    </div>
-                </div>
-                <div class="card mt-3">
-                    <div class="card-header">
-                    Data
-                    </div>
-                    <div class="card-body">
-                    <pre>{JSON.stringify(response.data, null, 2)}</pre>
-                    </div>
-                </div>
-                <div class="card mt-3">
-                    <div class="card-header">
-                    Config
-                    </div>
-                    <div class="card-body">
-                    <pre>{JSON.stringify(response.config, null, 2)}</pre>
-                    </div>
-                </div>
-                </>
-            }
+            <h2 className='m-4'>Result:</h2>
+
+
+            <div className="mx-4 p-3" style = {{border: '1px solid rgb(200, 200, 200)', borderRadius: '1em', background: 'rgb(247, 247, 247)'}}>
+                {JSON.stringify(response)}
+            </div>
+            
+            
             
         </div>
     )
